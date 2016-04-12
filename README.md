@@ -1,5 +1,5 @@
 # PhotoSharing
-This is a course project I did by my own
+This is a course project I did on my own
 I implement all the server side and client side codes based on MVC;
 
 
