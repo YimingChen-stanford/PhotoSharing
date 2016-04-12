@@ -1,0 +1,183 @@
+<!doctype html>
+<html ng-app="cs142App" ng-controller="MainController">
+    <head>
+
+
+        <title>{{main.title || "CS142 Class Project"}}</title>
+
+        <link href="./node_modules/angular-material/angular-material.css" rel="stylesheet" />
+    
+        <script src="./node_modules/angular/angular.js" type="text/javascript" ></script>
+        <script src="./node_modules/angular-animate/angular-animate.js" type="text/javascript" ></script>
+        <script src="./node_modules/angular-aria/angular-aria.js" type="text/javascript" ></script>
+        <script src="./node_modules/angular-material/angular-material.js" type="text/javascript" ></script>
+
+        <script src="node_modules/angular-route/angular-route.js"></script>
+
+        <script src="mainController.js"></script>
+        <link rel="stylesheet" type="text/css" href="main.css" />
+
+        <script src="components/user-list/user-listController.js"></script>
+        <link rel="stylesheet" type="text/css" href="components/user-list/user-list.css" />
+
+        <script src="components/user-detail/user-detailController.js"></script>
+        <link rel="stylesheet" type="text/css" href="components/user-detail/user-detail.css" />
+
+        <script src="components/user-photos/user-photosController.js"></script>
+        <link rel="stylesheet" type="text/css" href="components/user-photos/user-photos.css" />
+
+        <script src="components/login-register/login-registerController.js"></script>
+        <link rel="stylesheet" type="text/css" href="components/login-register/login-register.css" />
+
+         <script src="components/search-comments/search-commentsController.js"></script>
+        <link rel="stylesheet" type="text/css" href="components/search-comments/search-comments.css" />
+
+        <script src="./node_modules/angular-resource/angular-resource.js"  type="text/javascript" ></script>
+         <script src="./node_modules/ment.io/dist/mentio.js"></script>
+         <script src="./node_modules/ment.io/dist/mentio.min.js"></script>
+         <script src="./node_modules/ment.io/dist/mentio.templates.js"></script>
+         <link data-require="bootstrap-css@3.1.1" data-semver="3.1.1" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+         <style type="text/css">
+
+.editor {
+    overflow: auto;
+    min-height: 140px;
+}
+
+.menu-highlighted {
+    font-weight: bold;
+}
+
+.product-search, .user-search {
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    border-radius: 6px;
+    -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
+    box-shadow: 0 3px 9px rgba(0,0,0,.5);
+    background-clip: padding-box;
+    outline: 0;
+}
+
+.product-search {
+    max-width: 500px;
+}
+
+.product-search .list-group-item.active {
+    background-color: #f5f5f5;
+}
+
+.product-search:hover, .user-search:hover {
+    cursor: pointer;
+}
+
+.product-search .product-photo-container {
+    float: left;
+    width: 100px;
+}
+
+.product-search .product-photo {
+    max-width: 80px;
+    max-height: 50px;
+    border-radius: 3px;
+    margin: auto;
+}
+
+.product-search .list-group-item-heading, .product-search .list-group-item-text {
+    margin-left: 10px;
+}
+
+.user-search .list-group-item.active {
+    color: #fff;
+    background-color: #428bca;
+    border-color: #428bca;
+}
+
+.user-search .list-group-item.active .text-muted {
+    color: #ccc;
+}
+
+.user-search .list-group-item.active .text-primary {
+    color: #fff;
+}
+
+.user-search .list-group-item {
+    padding: 5px;
+}
+
+.user-search .user-photo {
+    max-width: 30px;
+    max-height: 30px;
+    border-radius: 15px;
+}
+
+.documentation-attr {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.documentation-element {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.section-heading {
+    margin-top: 30px;
+}
+
+.demo-scrollable-menu {
+    height: auto;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+</style>
+
+    </head>
+
+    <body layout="column">
+
+        <md-toolbar layout = "row" layout-align="space-around center">
+        <span>Yiming Chen's Photo App</span>
+
+        <span flex class = "version">
+            verson:{{toolbar.version}}
+        </span>       
+
+         <span ng-if ="main.loggedIn">
+             <input type="file" accept="image/*"  onchange="angular.element(this).scope().inputFileNameChanged(this)">
+        </span>
+        
+        <span ng-if ="main.loggedIn">{{toolbar.message}}</span>
+    
+
+        <span ng-if ="main.loggedIn">{{toolbar.display}}</span>
+
+        <span ng-if ="main.loggedIn">
+            <button ng-click = "logout()">Logout</button>
+        </span>
+        <span ng-if ="!main.loggedIn">
+            Please Login In
+        </span>
+        </md-toolbar>
+
+
+        <div class="container" flex layout="row">
+
+            <md-sidenav ng-if ="main.loggedIn" md-is-locked-open="true" class="md-whiteframe-z2">
+                <span>
+                    <input type="text" ng-model="sidebar.search"><button ng-click="search()">search</button>
+                </span>
+                
+                <div ng-include="'components/user-list/user-listTemplate.html'" ng-controller="UserListController"></div>
+            </md-sidenav>
+
+            <md-content flex id="content">
+                <div class = "content"ng-view></div>
+            </md-content>
+
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,32 @@
+/*
+CSS for the CS142 project #5 main page
+
+Since CSS uses a global name space for classes we should use class names starting with
+cs142-main- here.
+*/
+md-sidenav, 
+md-sidenav.md-locked-open, 
+md-sidenav.md-closed.md-locked-open-add-active {
+    min-width: 100px !important;
+    width: 85vw !important;
+    max-width: 200px !important;
+} 
+
+md-checkbox{
+	text-align: center;
+	margin-top: 15px;
+}
+md-content{
+	margin-left: 20px;
+}
+
+.container{
+	width: 80%;
+    height: auto;
+}
+.md-body-2{
+	color: #3385ff;
+}
+.version{
+	margin-left: 20px;
+}
