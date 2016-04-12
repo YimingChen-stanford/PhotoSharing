@@ -1,0 +1,47 @@
+
+<ul>
+	<li ng-repeat="x in photos track by $index">
+		<div class="container">
+			<img ng-src="images/{{x.file_name}}">
+		</div>
+		<p>Time Created:{{x.date_time}}</p>
+		<hr>
+		<p class="md-title">Comments:</p>
+		<div ng-repeat="y in x.comments track by $index">
+			<p class="md-body-2">{{y.date_time}}</p>
+			<p>{{y.comment}}</p>
+			<p class="commentUser">By <a ng-href="#/users/{{y.user.id}}">{{y.user.first_name}}</a></p>
+		</div>
+		<div class="addComments">
+				<hr>
+			<form ng-submit="submitComment(x.id,x.newComment)">
+
+        newComments:    <br/>
+                    
+<div class="form-group">
+                        <!--Note no need for external mentio-menu elements because there is only one trigger character needed-->
+
+                        <input type="text" mentio id="'{{x.id}}'" mentio-typed-text="typedTerm" mentio-items="mention.users" ng-model="x.newComment"
+                               size="100"/>
+                        </textarea>
+                    </div>
+                    <mentio-menu
+                                mentio-for="'{{x.id}}'"
+                                mentio-trigger-char="'@'"
+                                mentio-select="getPeopleText(item)"
+                                ></mentio-menu>
+                        
+                    
+        <input type="submit" ngClick="Submit" >
+    </form>
+		</div>
+	</div>
+		<div>
+				<hr>
+		</div>
+		
+	</li>
+</ul>
+
+
+    

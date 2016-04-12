@@ -1,0 +1,48 @@
+
+<form ng-submit="submitForm()">
+        Login name:    <br/><input type="text" ng-model="login.loginName">    <br/><br/>
+        Password: <br/><input type="password" ng-model="login.password"> <br/><br/>
+        <input type="submit" ngClick="Submit" >
+    </form>
+<hr>
+<div ng-if="main.register">
+	<h1> create a new account</h1>
+	<br>
+	Please fill in following fields:
+	<br>
+	login_name:
+	<br>
+	<input type="text" ng-model="register.login_name"></input>
+	<br>
+	password:
+	<br>
+	<input type="password" ng-model="register.password1"></input>
+	<br>
+	enter password again:
+	<br>
+	<input type="password" ng-model="register.password2"></input>
+	<br>
+	first_name:
+	<br>
+	<input type="text" ng-model="register.first_name"></input>
+	<br>
+	last_name:
+	<br>
+	<input type="text" ng-model="register.last_name"></input>
+	<br>
+	location:
+	<br>
+	<input type="text" ng-model="register.location"></input>
+	<br>
+
+	description:
+	<br>
+		<input type="text" ng-model="register.description"></input>
+	
+	<br>
+	occupation:
+	<br>
+	<input type="text" ng-model="register.occupation"></input>
+	<br>
+	<button ng-click = "register()">Register Me</button>
+</div>

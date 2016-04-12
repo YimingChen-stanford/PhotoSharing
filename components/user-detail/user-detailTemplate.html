@@ -1,0 +1,23 @@
+
+<h1>{{detail.first_name}} {{detail.last_name}}</h1>
+<p>Location: {{detail.location}}</p>
+<p>Description:{{detail.description}}</p>
+<p>Occupation:{{detail.occupation}}</p>
+<a href="#/photos/{{detail.id}}" >Photos</a>
+
+
+
+<ul ng-if="main.mention">
+	<p> Here are some photos where somebody @ you! check out!</p>
+	<li ng-repeat="x in main.mentionPhotos track by $index">
+		<div class="container">
+			<p>This photo belongs to<a href="#/users/{{x.user.id}}">{{x.user.first_name}}</a></p>
+			<a ng-href="#/photos/{{x.user_id}}">
+<img border="0" alt="W3Schools" ng-src="images/{{x.file_name}}" width="100" height="100">
+</a>
+		</div>
+		
+	</li>
+</ul>
+<p ng-if="!main.mention">There are no photos that @ you</p>
+

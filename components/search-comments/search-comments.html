@@ -1,0 +1,24 @@
+
+<ul>
+	<li ng-repeat="x in sidebar.photos track by $index">
+		<div class="container">
+			<p>This photo belongs to<a href="#/users/{{x.user.id}}">{{x.user.first_name}}</a></p>
+			<a ng-href="#/photos/{{x.user_id}}">
+<img border="0" alt="W3Schools" ng-src="images/{{x.file_name}}" width="100" height="100">
+</a>
+		</div>
+
+		<hr>
+		<p class="md-title">Comments:</p>
+		<div ng-repeat="y in x.comments track by $index">
+			<p class="md-body-2">{{y.date_time}}</p>
+			<p>{{y.comment}}</p>
+			<p class="commentUser">By <a ng-href="#/users/{{y.user.id}}">{{y.user.first_name}}</a></p>
+		</div>
+		<div>
+				<hr>
+		</div>
+		
+	</li>
+</ul>
+
