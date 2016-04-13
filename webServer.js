@@ -149,7 +149,7 @@ app.get('/user/list', function (request, response) {
             response.status(500).send(JSON.stringify(err));
             return;
         }
-        console.log("list");
+       
         response.end(JSON.stringify(users));
     /*users is an array of objects*/ });
 });
@@ -243,14 +243,14 @@ app.post('/admin/login', function (request, response) {
             response.status(400).send(JSON.stringify(err));
             return;
         }
-        console.log(password+">>>>>"+user.password);
+       
         if(user.password===password){
                  var result = JSON.parse(JSON.stringify(user));
                  result.mentionPhotos=[];
         request.session.user_id = user.id;
         request.session.login_name = user.login_name;
                 if(!user.mention){
-                    console.log("why)))))))))))))))");
+                    
                     response.end(JSON.stringify(result));
                     return;
                 }
@@ -291,9 +291,7 @@ app.post('/admin/login', function (request, response) {
                             response.status(500).write(err.message);
                             
                         }
-                        console.log("%^^^^&&&&&&&&&");
-                            console.log(result.mentionPhotos[0].user);
-                            console.log(result.mentionPhotos[0]);
+                       
                             console.log(result);
                             response.end(JSON.stringify(result));
                             return;                     
@@ -379,7 +377,6 @@ app.post('/photos/new', function (request, response) {
                 return;
     }
     processFormBody(request, response, function (err) {
-        console.log("^^^^^");
         if (err || !request.file) {
             // XXX -  Insert error handling code here.
             return;
@@ -470,16 +467,13 @@ app.post('/user', function (request, response) {
 app.get('/search', function (request, response) {
     var keyword = request.query.keyword;
     var searchKey  = "\""+keyword+"\"";
-    console.log(request);
-    console.log("^^^&&&&&");
-    console.log(searchKey);
+    
     Photo.find({$text: {$search:searchKey}},function (err, photos) {
         if(err){
             console.error('Doing /search error:', err);
             response.status(500).send(JSON.stringify(err));
             return;
         }
-         console.log(photos);
          var result = JSON.parse(JSON.stringify(photos));
         async.each(result,function fetchUsers(photo, callback){
             async.each(photo.comments,function fetchCommentUsers(comment,callback){
