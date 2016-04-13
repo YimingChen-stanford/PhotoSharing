@@ -7,7 +7,7 @@ cs142App.controller('UserPhotosController', ['$scope', '$routeParams','$rootScop
      * $routeParams  should have the userId property set with the path from the URL.
      */
     var userId = $routeParams.userId;
-    console.log('UserPhoto of ', $routeParams.userId);
+    
     $scope.photos = {};
     $scope.mention={};
     $scope.mention.users=[];
