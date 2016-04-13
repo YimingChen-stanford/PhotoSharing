@@ -61,7 +61,7 @@ cs142App.controller('MainController', ['$scope','$location', '$resource', '$http
         $rootScope.$on( "$routeChangeStart", function(event, next, current) {
             
           if (noOneIsLoggedIn()) {
-            console.log("#######");
+           
          // no logged user, redirect to /login-register unless already there
          if (next.templateUrl !== "components/login-register/login-registerTemplate.html") {
             
@@ -70,10 +70,7 @@ cs142App.controller('MainController', ['$scope','$location', '$resource', '$http
         }
 
         else{
-            console.log("$$$$$$$$$$$$$");
-            //console.log(current.templateUrl);
              console.log(next.templateUrl);
-           // $location.path("/login-register");
         }
 
         });
@@ -99,7 +96,6 @@ cs142App.controller('MainController', ['$scope','$location', '$resource', '$http
             }
             //Final State but status not OK
             if (xhr.status !== 200) {
-                console.log(5);
             return;
             }
                 doneCallback(JSON.parse(xhr.responseText));
@@ -117,7 +113,7 @@ cs142App.controller('MainController', ['$scope','$location', '$resource', '$http
         }
         $scope.logout = function (){
             var resource = $resource('/admin/logout');
-            console.log("+++");
+           
             resource.save({}, function () {
                 window.alert("You've logged out!");
                 $rootScope.$broadcast('loggeOut');
@@ -176,10 +172,10 @@ cs142App.controller('MainController', ['$scope','$location', '$resource', '$http
 
          $scope.search = function (){
             var resource = $resource('/search');
-            console.log("+++");
+           
             console.log($scope.sidebar.search);
             resource.query({keyword:$scope.sidebar.search}, function (model) {
-                 console.log("TTTTTTTTTTTTT");
+                 
                 $scope.sidebar.photos = model;
                 
                 console.log(model);
