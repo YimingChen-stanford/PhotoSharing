@@ -7,7 +7,7 @@ cs142App.controller('UserListController', ['$scope','$location','$rootScope',
         $scope.user.list = [];
     
         $scope.toolbar.page = "photo";
-        console.log("1234");
+       
         function doneCallback (model) {
             $scope.$apply(function () {
                 $scope.user.list = model;
