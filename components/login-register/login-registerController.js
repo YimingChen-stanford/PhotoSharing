@@ -9,7 +9,7 @@ cs142App.controller('LoginRegisterController', ['$scope', '$routeParams','$rootS
     $scope.login ={};
     $scope.login.loginName = "";
     $scope.login.password = "";
-    console.log("+++");
+    
     $scope.register ={};
     $scope.register.login_name = "";
     $scope.register.password1 = "";
@@ -23,13 +23,11 @@ cs142App.controller('LoginRegisterController', ['$scope', '$routeParams','$rootS
 
     $scope.submitForm = function(){
       var resource = $resource('/admin/login');
-      console.log($scope.login.loginName);
+      
       resource.save({login_name:$scope.login.loginName,password:$scope.login.password}, function (model) {
         $scope.main.loggedIn = true;
         $rootScope.$broadcast('loggedIn');
         $scope.toolbar.message = "Hi "+ model.first_name;
-        console.log("%%%%%%%%Mention");
-        console.log(model);
         
         if(model.mentionPhotos){
            $scope.main.mentionPhotos = model.mentionPhotos;
